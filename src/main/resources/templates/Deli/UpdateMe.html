@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html  lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>药购用户更新中心</title>
+    <!--edge浏览器H5兼容设置-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--360浏览器H5兼容设置-->
+    <meta name="renderer" content="webkit" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--导入核心文件-->
+    <script th:src="@{../../static/bootstrap3/js/holder.js}"></script>
+    <script th:src="@{../../static/bootstrap3/jquery-1.9.1.min.js}"></script>
+    <script th:src="@{../../static/bootstrap3/js/bootstrap.js}"></script>
+    <!-- 字体图标 -->
+    <link rel="stylesheet" th:href="@{../../static/bootstrap3/css/bootstrap.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{../../static/bootstrap3/font-awesome-4.7.0/css/font-awesome.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{../../static/css/layout.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{../../static/css/reg.css}" />
+</head>
+<body style="background-size: 100%;background-image:url('../../static/1.jpg')" >
+<div class="regDiv">
+    <h3 align="center">请输入更新信息:</h3>
+    <!--表单开始-->
+    <form class="form-horizontal" role="form" th:method="get" th:action="@{/deli/update}">
+        <!--用户名-->
+        <div class="form-group">
+            <label class="col-md-3 control-label">学号:</label>
+            <div class="col-md-8">
+                <input  type="text" th:id="id" th:name="id" class="form-control" th:value="${U.getSid()}" placeholder="请输入学号" required autofocus>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">名字:</label>
+            <div class="col-md-8">
+                <input  type="text" th:id="username" th:name="username" th:value="${U.getUsername()}" class="form-control" placeholder="请输入用户名" required autofocus>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">身份:</label>
+            <div class="col-md-8">
+                <input type="text" th:id="permissions" th:name="permissions" th:value="配送员" class="form-control" placeholder="请输入'用户'或者'配送员'" required autofocus>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">院系:</label>
+            <div class="col-md-8">
+                <input  type="text" th:id="faculties" th:name="faculties" th:value="${M.getFaculties()}" class="form-control" placeholder="请输入院系" required autofocus>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">宿舍号:</label>
+            <div class="col-md-8">
+                <input  type="text" th:id="dormitorynumber" th:name="dormitorynumber" th:value="${M.getDormitorynumber()}" class="form-control" placeholder="请输入宿舍号" required autofocus>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">电话号码:</label>
+            <div class="col-md-8">
+                <input  type="text"  th:id="phone" th:name="phone" class="form-control" th:value="${M.getPhone()}" placeholder="请输入电话号" required autofocus>
+            </div>
+        </div>
+        <!--密码-->
+        <div class="form-group">
+            <label class="col-md-3 control-label">密码:</label>
+            <div class="col-md-8">
+                <input  type="password" th:id="password" th:name="password" class="form-control" th:value="${U.getPassword()}" placeholder="请输入密码" required autofocus>
+            </div>
+        </div>
+        <!--确认密码-->
+        <div class="form-group">
+            <label class="col-md-3 control-label">确认密码:</label>
+            <div class="col-md-8">
+                <input type="password" class="form-control" placeholder="请再次输入密码" th:value="${U.getPassword()}" required autofocus>
+            </div>
+        </div>
+        <br/>
+        <div class="form-group">
+            <label class="col-md-3 control-label"></label>
+            <div class="col-md-8">
+                <input id="btn-login" class="btn btn-primary" type="submit" value=" 更新用户信息 "><br/>
+                <span><a th:href="@{/login}">重新登录</a><br/><a th:href="@{/deli/people}">返回个人资料</a></span>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

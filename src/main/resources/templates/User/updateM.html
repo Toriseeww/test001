@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!--edge浏览器H5兼容设置-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--360浏览器H5兼容设置-->
+    <meta name="renderer" content="webkit" />
+    <title>药品更新</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--导入核心文件-->
+    <script th:src="@{../../static/bootstrap3/js/holder.js}"></script>
+    <script th:src="@{../../static/bootstrap3/jquery-1.9.1.min.js}"></script>
+    <script th:src="@{../../static/bootstrap3/js/bootstrap.js}"></script>
+    <!-- 字体图标 -->
+    <link rel="stylesheet" th:href="@{../../static/bootstrap3/css/bootstrap.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{../../static/bootstrap3/font-awesome-4.7.0/css/font-awesome.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{../../static/css/layout.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{../../static/css/uP.css}" />
+</head>
+<body style="background-size: 100%;background-image:url('../../static/5.jpg')" >
+<div class="up">
+    <h3 align="center">请输入更新信息:</h3>
+    <!--表单开始-->
+    <form class="form-horizontal" role="form" th:method="get" th:action="@{/user/updateP}">
+        <div class="form-group">
+            <label class="col-md-3 control-label">订单号码:</label>
+            <div class="col-md-8">
+                <input name="username" type="text" th:id="onum" th:name="onum" th:value="${o}" class="form-control" readonly="readonly">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">所需药品:</label>
+            <div class="col-md-8">
+                <input name="username" type="text" th:id="pcol" th:name="pcol" class="form-control" placeholder="请输入所需药品" required autofocus>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">药品价格:</label>
+            <div class="col-md-8">
+                <input name="admin" type="text" th:id="price" th:name="price" class="form-control" placeholder="请输入药品价格" required autofocus>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label"></label>
+            <div class="col-md-8">
+                <input id="btn-login" class="btn btn-primary" type="submit" value=" 更新药品信息 "><br/>
+                <span><a th:href="@{/USERAll}">返回主界面</a><br/><a th:href="@{/user/lookNOrder}">返回订单</a></span>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

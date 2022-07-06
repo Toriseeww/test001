@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>支付订单</title>
+    <!--edge浏览器H5兼容设置-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--360浏览器H5兼容设置-->
+    <meta name="renderer" content="webkit" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--导入核心文件-->
+    <script th:src="@{../../static/bootstrap3/js/holder.js}"></script>
+    <script th:src="@{../../static/bootstrap3/jquery-1.9.1.min.js}"></script>
+    <script th:src="@{../../static/bootstrap3/js/bootstrap.js}"></script>
+    <!-- 字体图标 -->
+    <link rel="stylesheet" th:href="@{../../static/bootstrap3/css/bootstrap.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{../../static/bootstrap3/font-awesome-4.7.0/css/font-awesome.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{../../static/css/layout.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{../../static/css/Result.css}" />
+</head>
+<body style="background-size: 100%;background-image:url('../../static/5.jpg')">
+<h3 align="center">支付结果为:</h3>
+<div class="re">
+    <h3 align="center" style="margin-top: 20px" th:text="${o eq 1?'支付订单成功':'支付订单失败,请检查余额数目'}"></h3>
+    <br/>
+    <form th:action="@{/user/lookPay}">
+        <input style="margin-left:90px" id="btn-login" class="btn btn-primary" type="submit" value=" 继续支付订单" />
+        <a style="margin-left:110px;margin-top: 10px" th:href="@{/USERAll}">返回主界面</a><br/>
+    </form>
+</div>
+</body>
+</html>

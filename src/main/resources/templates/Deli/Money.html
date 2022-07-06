@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>查看余额</title>
+    <!--edge浏览器H5兼容设置-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--360浏览器H5兼容设置-->
+    <meta name="renderer" content="webkit" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--导入核心文件-->
+    <script th:src="@{../../static/bootstrap3/js/holder.js}"></script>
+    <script th:src="@{../../static/bootstrap3/jquery-1.9.1.min.js}"></script>
+    <script th:src="@{../../static/bootstrap3/js/bootstrap.js}"></script>
+    <!-- 字体图标 -->
+    <link rel="stylesheet" th:href="@{../../static/bootstrap3/css/bootstrap.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{../../static/bootstrap3/font-awesome-4.7.0/css/font-awesome.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{../../static/css/layout.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{../../static/css/Money.css}" />
+</head>
+<body style="background-size: 100%;background-image:url('../../static/4.jpg')">
+<form th:action="@{/DeliAll}">
+    <input style="margin-left:300px" id="btn-login" class="btn btn-primary" type="submit" value="返回界面" />
+</form>
+<h2 align="center" style="margin-top: 10px">当前用户余额如下:</h2>
+<div class="money">
+        <div class = "mycontent">
+            <div class="panel-body">
+                <div class="panel-body">
+                    <form class="form-horizontal" th:method="get"  th:action="@{/deli/rechargeM}">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">用户ID：</label>
+                            <div class="col-md-8">
+                                <input class="form-control"  th:id="uid" th:name="uid"  th:value="${N.getUid()}" readonly="readonly">
+                            </div>
+                            <input  class="btn btn-primary" type="submit" value="充值" />
+                        </div>
+                    </form>
+                    <form id="form-change-info" class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">用户姓名:</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" th:value="${U.getUsername()}" readonly="readonly">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">用户余额:</label>
+                            <div class="col-md-8">
+                                <input type="text" th:value="${N.getMoney()}+'￥'" class="form-control" readonly="readonly">
+                            </div>
+                        </div>
+                    </form>
+                    <form th:method="get" style="margin-left: 5px" th:action="@{/deli/WithdrawalsM}">
+                        <label style="margin-top: 10px" class="col-md-2 control-label">提现:</label>
+                        <input class="btn btn-primary" type="submit" th:id="uid" th:name="uid" th:value="${N.getUid()}">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<br/>
+</body>
+</html>

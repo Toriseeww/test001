@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.test001.mapper.PhaMapper">
+  <resultMap id="BaseResultMap" type="com.example.test001.model.Pha">
+    <id column="onum" jdbcType="VARCHAR" property="onum" />
+    <result column="fees" jdbcType="VARCHAR" property="fees" />
+    <result column="price" jdbcType="VARCHAR" property="price" />
+    <result column="pcol" jdbcType="VARCHAR" property="pcol" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="accept" jdbcType="VARCHAR" property="accept" />
+    <result column="pid" jdbcType="VARCHAR" property="pid" />
+    <result column="mstate" jdbcType="VARCHAR" property="mstate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    onum, fees, price, pcol, state, accept, pid, mstate
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from p
+    where onum = #{onum,jdbcType=VARCHAR}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from p
+    where onum = #{onum,jdbcType=VARCHAR}
+  </delete>
+
+  <insert id="insert" parameterType="com.example.test001.model.Pha">
+    insert into p
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="onum != null">
+        onum,
+      </if>
+      <if test="fees != null">
+        fees,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="pcol != null">
+        pcol,
+      </if>
+        state,
+        accept,
+      <if test="pid != null">
+        pid,
+      </if>
+        mstate,
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="onum != null">
+        #{onum,jdbcType=VARCHAR},
+      </if>
+      <if test="fees != null">
+        #{fees,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="pcol != null">
+        #{pcol,jdbcType=VARCHAR},
+      </if>
+        #{state,jdbcType=VARCHAR},
+        #{accept,jdbcType=VARCHAR},
+      <if test="pid != null">
+        #{pid,jdbcType=VARCHAR},
+      </if>
+        #{mstate,jdbcType=VARCHAR},
+    </trim>
+  </insert>
+
+  <!--  更新状态和配送员-->
+  <update id="update" parameterType="com.example.test001.model.Pha">
+    update p
+    set price = #{price,jdbcType=VARCHAR},
+        pcol = #{pcol,jdbcType=VARCHAR}
+    where onum = #{onum,jdbcType=VARCHAR}
+  </update>
+
+  <!--  更新状态和配送员-->
+  <update id="updateAcSt" parameterType="com.example.test001.model.Pha">
+    update p
+    set state = #{state,jdbcType=VARCHAR},
+        accept = #{accept,jdbcType=VARCHAR}
+    where onum = #{onum,jdbcType=VARCHAR}
+  </update>
+
+  <!--  获取全部订单-->
+  <select id="getPha" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from p
+  </select>
+
+  <!--  获取订单-->
+  <select id="getPcol" resultType="com.example.test001.model.Pha">
+    select <include refid="Base_Column_List" /> from p where pid = #{pid};
+  </select>
+
+  <!--  获取订单-->
+  <select id="getPid" resultType="com.example.test001.model.Pha">
+    select * from p where onum = #{onum};
+  </select>
+
+  <update id="updateMs" parameterType="com.example.test001.model.Pha">
+    update p
+    set mstate = #{mstate,jdbcType=VARCHAR}
+    where onum = #{onum,jdbcType=VARCHAR}
+  </update>
+</mapper>

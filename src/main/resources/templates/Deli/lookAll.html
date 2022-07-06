@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>待揽收用户信息</title>
+    <!--edge浏览器H5兼容设置-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--360浏览器H5兼容设置-->
+    <meta name="renderer" content="webkit" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--导入核心文件-->
+    <script src="../../static/bootstrap3/js/holder.js"></script>
+    <link href="../../static/bootstrap3/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <script src="../../static/bootstrap3/jquery-1.8.3.min.js"></script>
+    <script src="../../static/bootstrap3/js/bootstrap.js"></script>
+    <!-- 字体图标 -->
+    <link rel="stylesheet" href="../static/bootstrap3/font-awesome-4.7.0/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/layout.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/webindex.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/footer.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/top.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/LAll.css" />
+</head>
+<div class="col-sm-offset-2 col-sm-10">
+    <a type="submit" th:href="@{/DeliAll}"  class="btn btn-primary">返回配送员界面</a>
+</div>
+<body style="background-size: 100%;background-image:url('../../static/4.jpg')">
+<h2 align="center">待揽收用户资料信息</h2>
+<div class="lal" th:each="m,mStat:${M}">
+    <h4 align="center" th:text="未配送+${mStat.count}+信息+':'"></h4>
+    <div class = "mycontent">
+        <div class="panel-body">
+            <div class="panel-body">
+                <form class="form-horizontal" th:method="get"  th:action="@{/deli/updateAcSt}">
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">订单号：</label>
+                        <div class="col-md-8">
+                            <input class="form-control"  th:id="onum" th:name="onum"  th:value="${m.getOnum()}" readonly="readonly">
+                        </div>
+                        <input  class="btn btn-primary" type="submit" value="揽收订单" />
+                    </div>
+                </form>
+                <form id="form-change-info" class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">所需药品：</label>
+                        <div class="col-md-8">
+                            <input type="text" th:value="${m.getPcol()}" class="form-control" readonly="readonly">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">药品价格：</label>
+                        <div class="col-md-8">
+                            <input th:value="${m.getPrice()}+'￥'" class="form-control" readonly="readonly">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">配送费：</label>
+                        <div class="col-md-8">
+                            <input th:value="${m.getFees()}+'￥'" class="form-control" readonly="readonly">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<br/>
+<a style="margin-left:1100px;color: red" href="#top">返回顶部</a>
+</body>
+</html>

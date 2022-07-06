@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.test001.mapper.MMapper">
+  <resultMap id="BaseResultMap" type="com.example.test001.model.M">
+    <id column="uid" jdbcType="VARCHAR" property="uid" />
+    <result column="faculties" jdbcType="VARCHAR" property="faculties" />
+    <result column="phone" jdbcType="INTEGER" property="phone" />
+    <result column="dormitorynumber" jdbcType="VARCHAR" property="dormitorynumber" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    uid, faculties, phone, dormitorynumber
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from m
+    where uid = #{uid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from m
+    where uid = #{uid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insertSelective" parameterType="com.example.test001.model.M">
+    insert into m (uid, faculties, phone,
+      dormitorynumber)
+    values (#{uid,jdbcType=VARCHAR}, #{faculties,jdbcType=VARCHAR}, #{phone,jdbcType=INTEGER},
+      #{dormitorynumber,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insert" parameterType="com.example.test001.model.M">
+    insert into m
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="faculties != null">
+        faculties,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="dormitorynumber != null">
+        dormitorynumber,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="faculties != null">
+        #{faculties,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=INTEGER},
+      </if>
+      <if test="dormitorynumber != null">
+        #{dormitorynumber,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.test001.model.M">
+    update "m"
+    <set>
+      <if test="faculties != null">
+        faculties = #{faculties,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=INTEGER},
+      </if>
+      <if test="dormitorynumber != null">
+        dormitorynumber = #{dormitorynumber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where uid = #{uid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.test001.model.M">
+    update m
+    set faculties = #{faculties,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=INTEGER},
+      dormitorynumber = #{dormitorynumber,jdbcType=VARCHAR}
+    where uid = #{uid,jdbcType=VARCHAR}
+  </update>
+
+  <select id="getM" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from m
+  </select>
+</mapper>

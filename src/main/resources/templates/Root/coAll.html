@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>账号管理</title>
+    <!--edge浏览器H5兼容设置-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--360浏览器H5兼容设置-->
+    <meta name="renderer" content="webkit" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--导入核心文件-->
+    <script src="../../static/bootstrap3/js/holder.js"></script>
+    <link href="../../static/bootstrap3/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <script src="../../static/bootstrap3/jquery-1.8.3.min.js"></script>
+    <script src="../../static/bootstrap3/js/bootstrap.js"></script>
+    <!-- 字体图标 -->
+    <link rel="stylesheet" href="../static/bootstrap3/font-awesome-4.7.0/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/layout.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/webindex.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/footer.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/top.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/coAll.css" />
+</head>
+    <div class="col-sm-offset-2 col-sm-10">
+        <a type="submit" th:href="@{/ROOTAll}"  class="btn btn-primary">返回管理界面</a>
+    </div>
+<body style="background-size: 110%;background-image:url('../../static/2.jpg')">
+<h2 align="center">全部用户账号信息：</h2>
+<div class="ca" th:each="user,userStat:${User}">
+    <h4 align="center" th:text="用户+${userStat.count}+账号信息+':'"></h4>
+    <div class = "mycontent">
+            <div class="panel-body">
+            <form th:method="get" class="form-horizontal"  th:action="@{/root/meAll}">
+                <div class="form-group">
+                    <input  class="btn btn-primary" type="submit" value="用户资料" />
+                    <label class="col-md-2 control-label">用户ID：</label>
+                    <div class="col-md-8">
+                        <input type="text"  class="form-control" th:id="id" th:name="id"  th:value="${user.getSid()}" readonly="readonly">
+                    </div>
+                </div>
+            </form>
+                <form id="form-change-info" class="form-horizontal" role="form">
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">用户姓名：</label>
+                        <div class="col-md-8">
+                            <input type="text" th:value="${user.getUsername()}" class="form-control" readonly="readonly">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">用户密码：</label>
+                        <div class="col-md-8">
+                            <input th:value="${user.getPassword()}" class="form-control" readonly="readonly">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">用户类别：</label>
+                        <div class="col-md-8">
+                            <input type="text" th:value="${user.getPermissions()}" class="form-control" readonly="readonly">
+                            <h6>注:user为普通用户,Deli为配送员,root为管理员</h6>
+                        </div>
+                    </div>
+                </form>
+            </div>
+    </div>
+    <form th:method="get" style="margin-left: 15px" th:action="@{/root/delete}">
+        <label style="margin-top: 10px" class="col-md-2 control-label">删除用户</label>
+        <input class="btn btn-primary" type="submit" th:id="id" th:name="id" th:value="${user.getSid()}">
+    </form>
+</div>
+<br/>
+<a style="margin-left:1100px;color: red" href="#top">返回顶部</a>
+</body>
+</html>

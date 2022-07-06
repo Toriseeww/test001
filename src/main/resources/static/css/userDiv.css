@@ -1,0 +1,10 @@
+/*注册页半透明框的样式*/
+.uDiv{
+    height: 250px;
+    width: 460px;
+    background-color: rgba(255,255,255,0.85);
+    margin: 130px 0 0 330px;
+    border-radius: 10px;
+    color: #666666;
+    padding: 8px;
+}

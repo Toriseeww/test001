@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>查看待支付订单结果</title>
+    <!--edge浏览器H5兼容设置-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--360浏览器H5兼容设置-->
+    <meta name="renderer" content="webkit" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--导入核心文件-->
+    <script th:src="@{../../static/bootstrap3/js/holder.js}"></script>
+    <script th:src="@{../../static/bootstrap3/jquery-1.9.1.min.js}"></script>
+    <script th:src="@{../../static/bootstrap3/js/bootstrap.js}"></script>
+    <!-- 字体图标 -->
+    <link rel="stylesheet" th:href="@{../../static/bootstrap3/css/bootstrap.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{../../static/bootstrap3/font-awesome-4.7.0/css/font-awesome.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{../../static/css/layout.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{../../static/css/ZF.css}" />
+</head>
+<body style="background-size: 100%;background-image:url('../../static/5.jpg')">
+<h2 align="center" style="margin-top: 10px">当前待支付订单信息如下:</h2>
+<form th:action="@{/USERAll}">
+    <input style="margin-left:300px" id="btn-login" class="btn btn-primary" type="submit" value="返回界面" />
+</form>
+<div class="zf" th:each="m,mStat:${p}">
+    <div class = "mycontent">
+        <div class="panel-body">
+            <div class="panel-body">
+                <form class="form-horizontal" th:method="get" th:action="@{/user/deleteOrders}">
+                    <div class="form-group">
+                        <input  class="btn btn-primary" type="submit" value="删除订单" />
+                        <label class="col-md-2 control-label">订单号：</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" th:id="onum" th:name="onum"  th:value="${m.getOnum()}" readonly="readonly">
+                        </div>
+                    </div>
+                </form>
+                <form id="form-change-info" class="form-horizontal" role="form">
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">用户ID:</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" th:value="${m.getPid()}" readonly="readonly">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">所需药品:</label>
+                        <div class="col-md-8">
+                            <input type="text" th:value="${m.getPcol()}" class="form-control" readonly="readonly">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">药品价格:</label>
+                        <div class="col-md-8">
+                            <input type="text" th:value="${m.getPrice()+'￥'}" class="form-control" readonly="readonly">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">配送费:</label>
+                        <div class="col-md-8">
+                            <input type="text" th:value="${m.getFees()+'￥'}" class="form-control" readonly="readonly">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <form th:method="get" style="margin-left: 30px" th:action="@{/user/updatepm}">
+            <label style="margin-top: 10px" class="col-md-2 control-label">修改订单:</label>
+            <input class="btn btn-primary" type="submit" th:id="onum" th:name="onum" th:value="${m.getOnum()}">
+        </form>
+        <br/>
+        <form th:method="get" style="margin-left: 30px" th:action="@{/user/pay}">
+            <label style="margin-top: 10px" class="col-md-2 control-label">支付订单:</label>
+            <input class="btn btn-primary" type="submit" th:id="onum" th:name="onum" th:value="${m.getOnum()}">
+        </form>
+    </div>
+</div>
+<br/>
+<a style="margin-left:1100px;color: red" href="#top">返回顶部</a>
+</body>
+</html>

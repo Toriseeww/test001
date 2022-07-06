@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!--edge浏览器H5兼容设置-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--360浏览器H5兼容设置-->
+    <meta name="renderer" content="webkit" />
+    <title>药物代购软件</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--导入核心文件-->
+    <script th:src="@{../../static/bootstrap3/js/holder.js}"></script>
+    <script th:src="@{../../static/bootstrap3/jquery-1.9.1.min.js}"></script>
+    <script th:src="@{../../static/bootstrap3/js/bootstrap.js}"></script>
+    <!-- 字体图标 -->
+    <link rel="stylesheet" th:href="@{../../static/bootstrap3/css/bootstrap.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{../../static/bootstrap3/font-awesome-4.7.0/css/font-awesome.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{../../static/css/layout.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{../../static/css/userDiv.css}" />
+</head>
+<body  style="background-size: 100%;;background-image:url('../static/3.jpg')" >
+<div class="container mycontent text-left">
+    <h2 align="center">欢迎来到校园药品代购软件:</h2>
+    <!--透明层 -->
+    <div class="uDiv">
+    <div class="loginDiv">
+        <h4 align="center">访问请登录：</h4>
+        <br/>
+        <!--表单开始-->
+        <form id="form-login" class="form-horizontal" role="form" method="post" action="/login">
+            <!--用户名-->
+            <div class="form-group">
+                <label for="username" class="col-md-3 control-label">学号：</label>
+                <div class="col-md-8">
+                    <input id="username" name="username" type="text" class="form-control"  placeholder="请输入学号" required autofocus>
+                </div>
+            </div>
+            <br/>
+            <!--密码-->
+            <div class="form-group">
+                <label for="password" class="col-md-3 control-label">密码：</label>
+                <div class="col-md-8">
+                    <input   type="password" class="form-control"  id="password" name="password" placeholder="请输入密码" required autofocus>
+                </div>
+            </div>
+            <!--提交按钮-->
+            <div class="form-group">
+                <label class="col-md-3 control-label"></label>
+                <div class="col-md-8">
+                    <input id="btn-login" class="btn btn-primary" type="submit" value="登录" />
+                    <span class="pull-right"><small>还没有账号？</small><a  th:href="@{/insertMessage}">注册</a><br/></span>
+                </div>
+            </div>
+        </form>
+    </div>
+    </div>
+</div>
+</body>
+</html>

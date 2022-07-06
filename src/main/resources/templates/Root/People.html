@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>个人资料</title>
+    <!--edge浏览器H5兼容设置-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--360浏览器H5兼容设置-->
+    <meta name="renderer" content="webkit" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--导入核心文件-->
+    <script src="../../static/bootstrap3/js/holder.js"></script>
+    <link href="../../static/bootstrap3/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <script src="../../static/bootstrap3/jquery-1.8.3.min.js"></script>
+    <script src="../../static/bootstrap3/js/bootstrap.js"></script>
+    <!-- 字体图标 -->
+    <link rel="stylesheet" href="../static/bootstrap3/font-awesome-4.7.0/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/layout.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/webindex.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/footer.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/top.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/people.css" />
+</head>
+<body style="background-size: 110%;background-image:url('../../static/2.jpg')">
+<h2 align="center">个人资料如下：</h2>
+<div class="peo">
+<div class = "mycontent">
+    <div class="panel-body">
+        <div class="panel-body">
+            <form id="form-change-info" class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label class="col-md-2 control-label">学号：</label>
+                    <div class="col-md-8">
+                        <input class="form-control" th:value="${U.getSid()}" readonly="readonly">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">姓名：</label>
+                    <div class="col-md-8">
+                        <input type="text" th:value="${U.getUsername()}" class="form-control" readonly="readonly">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">身份：</label>
+                    <div class="col-md-8">
+                        <input th:value="${U.getPermissions()}" class="form-control" readonly="readonly">
+                        <h6>注:user为普通用户,Deli为配送员,root为管理员</h6>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">院系：</label>
+                    <div class="col-md-8">
+                        <input type="text" th:value="${M.getFaculties()}" class="form-control" readonly="readonly">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">宿舍号：</label>
+                    <div class="col-md-8">
+                        <input type="text" th:value="${M.getDormitorynumber()}" class="form-control" readonly="readonly">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">电话号码：</label>
+                    <div class="col-md-8">
+                        <input type="text" th:value="${M.getPhone()}" class="form-control" readonly="readonly">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <a type="submit" th:href="@{/root/updateMessage}" class="btn btn-primary">修改信息</a>
+                    </div>
+                    <div class="col-sm-offset-2 col-sm-10" style = "margin-top: 20px">
+                        <a type="submit" th:href="@{/ROOTAll}"  class="btn btn-primary">返回管理界面</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>全部用户信息</title>
+    <!--edge浏览器H5兼容设置-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--360浏览器H5兼容设置-->
+    <meta name="renderer" content="webkit" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--导入核心文件-->
+    <script src="../../static/bootstrap3/js/holder.js"></script>
+    <link href="../../static/bootstrap3/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <script src="../../static/bootstrap3/jquery-1.8.3.min.js"></script>
+    <script src="../../static/bootstrap3/js/bootstrap.js"></script>
+    <!-- 字体图标 -->
+    <link rel="stylesheet" href="../static/bootstrap3/font-awesome-4.7.0/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/layout.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/webindex.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/footer.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/top.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/meAll.css" />
+</head>
+
+<body style="background-size: 110%;background-image:url('../../static/2.jpg')">
+<div class="col-sm-offset-2 col-sm-10">
+    <a type="submit" th:href="@{/root/coAll}"  class="btn btn-primary">返回账号信息界面</a>
+</div>
+<h2 align="center">用户资料信息</h2>
+<div class="ma">
+    <div class = "mycontent">
+        <div class="panel-body">
+            <div class="panel-body">
+                <form id="form-change-info" class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">用户院系：</label>
+                        <div class="col-md-8">
+                            <input type="text" th:value="${M.getFaculties()}" class="form-control" readonly="readonly">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">用户电话：</label>
+                        <div class="col-md-8">
+                            <input th:value="${M.getPhone()}" class="form-control" readonly="readonly">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">用户宿舍：</label>
+                        <div class="col-md-8">
+                            <input type="text" th:value="${M.getDormitorynumber()}" class="form-control" readonly="readonly">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<br/>
+</body>
+</html>

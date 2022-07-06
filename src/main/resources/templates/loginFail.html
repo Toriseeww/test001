@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!--edge浏览器H5兼容设置-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--360浏览器H5兼容设置-->
+    <meta name="renderer" content="webkit" />
+    <title>药购用户登录失败界面</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--导入核心文件-->
+    <script th:src="@{../../static/bootstrap3/js/holder.js}"></script>
+    <script th:src="@{../../static/bootstrap3/jquery-1.9.1.min.js}"></script>
+    <script th:src="@{../../static/bootstrap3/js/bootstrap.js}"></script>
+    <!-- 字体图标 -->
+    <link rel="stylesheet" th:href="@{../../static/bootstrap3/css/bootstrap.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{../../static/bootstrap3/font-awesome-4.7.0/css/font-awesome.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{../../static/css/layout.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{../static/css/Result.css}" />
+</head>
+<body style="background-size: 100%;background-image:url('../static/3.jpg')">
+<div class="re">
+<h3 align="center">登录失败，用户不存在或填写信息错误！</h3>
+<form th:action="@{/login}">
+    <div class="form-group">
+        <div class="col-md-8">
+            <input style="margin-left: 80px;margin-top: 30px" id="btn-login" class="btn btn-primary" type="submit" value="重新登录" />
+        </div>
+    </div>
+</form>
+</div>
+</body>
+</html>

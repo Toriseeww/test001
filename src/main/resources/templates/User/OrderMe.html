@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>填写订单</title>
+    <!--edge浏览器H5兼容设置-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--360浏览器H5兼容设置-->
+    <meta name="renderer" content="webkit" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--导入核心文件-->
+    <script th:src="@{../../static/bootstrap3/js/holder.js}"></script>
+    <script th:src="@{../../static/bootstrap3/jquery-1.9.1.min.js}"></script>
+    <script th:src="@{../../static/bootstrap3/js/bootstrap.js}"></script>
+    <!-- 字体图标 -->
+    <link rel="stylesheet" th:href="@{../../static/bootstrap3/css/bootstrap.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{../../static/bootstrap3/font-awesome-4.7.0/css/font-awesome.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{../../static/css/layout.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{../../static/css/CrOr.css}" />
+</head>
+<body style="background-size: 100%;background-image:url('../../static/5.jpg')" >
+<div class="cr">
+<h3 align="center">请输入要创建的订单信息：</h3>
+<form id="form-login" class="form-horizontal" role="form" th:method="get" th:action="@{/user/Order}">
+    <!--用户名-->
+    <div class="form-group">
+        <label class="col-md-3 control-label">学号：</label>
+        <div class="col-md-8">
+            <input th:type="text" th:id="pid" th:name="pid" type="text" class="form-control"  th:value="${i}" readonly="readonly">
+        </div>
+    </div>
+    <!--药品-->
+    <div class="form-group">
+        <label class="col-md-3 control-label">所需药品：</label>
+        <div class="col-md-8">
+            <input  th:type="text" th:id="pcol" th:name="pcol" class="form-control" placeholder="请输入所需药品  (可一次性输入多样)" required autofocus>
+        </div>
+    </div>
+    <!--价格-->
+    <div class="form-group">
+        <label  class="col-md-3 control-label">药品价格：</label>
+        <div class="col-md-8">
+            <input input th:type="text" th:id="price" th:name="price" type="text" class="form-control"  placeholder="请输入药品价格  (多样药品请输入总价)" required autofocus>
+        </div>
+    </div>
+    <!--价格-->
+    <div class="form-group">
+        <label  class="col-md-3 control-label">配送费：</label>
+        <div class="col-md-8">
+            <input input th:type="text" th:id="fees" th:name="fees" type="text" class="form-control"  placeholder="请输入配送费(单价不准低于1￥)" required autofocus>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label"></label>
+        <div class="col-md-8">
+            <input id="btn-login" class="btn btn-primary" type="submit" value="创建订单" />
+            <span class="pull-right"><a th:href="@{/USERAll}">返回界面</a><br/>
+            </span>
+        </div>
+    </div>
+</form>
+</div>
+</body>
+</html>

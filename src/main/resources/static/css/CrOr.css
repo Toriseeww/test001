@@ -1,0 +1,10 @@
+/*注册页半透明框的样式*/
+.cr{
+    height:350px;
+    width: 700px;
+    background-color: rgba(255,255,255,0.5);
+    margin: 60px 60px 0 420px;
+    border-radius: 10px;
+    color: #666666;
+    padding: 8px;
+}

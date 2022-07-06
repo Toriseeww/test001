@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.test001.mapper.MonMapper">
+  <resultMap id="BaseResultMap" type="com.example.test001.model.Mon">
+    <id column="uid" jdbcType="VARCHAR" property="uid" />
+    <result column="money" jdbcType="VARCHAR" property="money" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    uid, money
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mon
+    where uid = #{uid,jdbcType=VARCHAR}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from mon
+    where uid = #{uid,jdbcType=VARCHAR}
+  </delete>
+
+  <insert id="insert" parameterType="com.example.test001.model.Mon">
+    insert into mon
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        uid,
+      </if>
+        money,
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        #{uid,jdbcType=VARCHAR},
+      </if>
+        #{money,jdbcType=VARCHAR},
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKey" parameterType="com.example.test001.model.Mon">
+    update mon
+    set money = #{money,jdbcType=VARCHAR}
+    where uid = #{uid,jdbcType=VARCHAR}
+  </update>
+
+  <select id="getMon" resultType="com.example.test001.model.Mon">
+  select * from mon where uid = #{uid};
+  </select>
+</mapper>

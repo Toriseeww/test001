@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>配送员界面</title>
+    <!--edge浏览器H5兼容设置-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--360浏览器H5兼容设置-->
+    <meta name="renderer" content="webkit" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--导入核心文件-->
+    <script src="../static/bootstrap3/js/holder.js"></script>
+
+    <link rel="stylesheet" href="../static/swiper8/swiper-bundle.min.css">
+    <script src="../static/swiper8/swiper-bundle.min.js"></script>
+    <script src="../static/bootstrap3/jquery-1.8.3.min.js"></script>
+    <script src="../static/bootstrap3/js/bootstrap.js"></script>
+    <!-- 字体图标 -->
+    <link href="../static/bootstrap3/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../static/bootstrap3/font-awesome-4.7.0/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/layout.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/webindex.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/footer.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/top.css" />
+    <style>
+        #ss{
+            width: 1200px;
+            margin: 0 auto;
+        }
+    .swiper{
+        height: 432px;
+    }
+    .swiper-slide img{
+        width: 100%;
+        margin: auto;
+    }
+    </style>
+</head>
+<body id="ss" style="background-size: 100%;background-image:url('../static/4.jpg')">
+<div class="row">
+    <h3 align="center">亲爱的配送员，欢迎来到校园药品代购:</h3><br/><br/>
+    <div class="col-md-9 top-item">
+        <ul class="list-inline pull-right">
+            <li>
+                <a th:href="@{/deli/Money}">查看余额</a>
+            </li>
+            <li class="li-split">|</li>
+            <li>
+                <a th:href="@{/deli/lookAll}"><span></span>揽收订单</a>
+            </li>
+            <li class="li-split">|</li>
+            <li>
+                <a th:href="@{/deli/lookL}"><span></span>待配送订单</a>
+            </li>
+            <li class="li-split">|</li>
+            <li>
+                <a th:href="@{/LookMe}"><span></span>&nbsp;搜索订单</a>
+            </li>
+            <li class="li-split">|</li>
+            <li>
+                <a th:href="@{/deli/people}"><span class="fa fa-user"></span>&nbsp;个人资料</a>
+            </li>
+            <li class="li-split">|</li>
+            <li><a th:href="@{/login}"><span class="fa fa-user"></span>&nbsp;重新登录</a></li>
+        </ul>
+    </div>
+</div>
+<br/>
+<br/>
+<br/>
+<h3 align="center">广告位宣传：</h3>
+<div>
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="../static/11.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="../static/22.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="../static/33.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="../static/44.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="../static/55.jpg" alt=""></div>
+        </div>
+        <!-- 如果需要分页器 -->
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <!-- 如果需要导航按钮 -->
+        <div class="swiper-button-prev"></div>
+<!--        &lt;!&ndash; 如果需要滚动条 &ndash;&gt;-->
+<!--        <div class="swiper-scrollbar"></div>-->
+    </div>
+</div>
+<script>
+    var mySwiper = new Swiper ('.swiper',
+        {
+            // direction: 'vertical', // 垂直切换选项
+            loop: true, // 循环模式选项
+            autoplay:true,
+
+            // 如果需要分页器
+            pagination: {
+                el: '.swiper-pagination',
+            },
+
+            // 如果需要前进后退按钮
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+            // 如果需要滚动条
+            scrollbar: {
+                el: '.swiper-scrollbar',
+            },
+        })
+</script>
+</body>
+</html>
